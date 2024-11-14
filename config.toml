@@ -49,3 +49,14 @@ pygmentsUseClasses = true
 [services]
   [services.googleAnalytics]
     ID = "UA-123456-789"
+    
+[markup.goldmark.extensions.passthrough]
+      enable = true
+      delimiters.block = [
+        ["\\[", "\\]"],
+        ["$$", "$$"]
+      ]
+      delimiters.inline = [
+        ["\\(", "\\)"],
+        ["$", "$"]
+      ]

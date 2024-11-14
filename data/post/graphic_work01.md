@@ -46,20 +46,16 @@ $$
 
 
 
+如果想绕着C点进行旋转
 
-
-#### **如果想绕着C点进行旋转**
-
-先平移到原点，然后再旋转，最后再平移回去
-
-![How to rotate around a given point C?](/images/rotatePointC.png)
+![How to rotate around a given point C?](D:\hugo\GeeSite\static\images\rotatePointC.png)
 $$
 T(c) \cdot R(\alpha) \cdot T(-c)
 $$
 
 
 
-### 旋转矩阵（围绕 x, y, z 轴）
+### 旋转矩阵（围绕 x-, y-, z- 轴）
 
 **围绕 x 轴的旋转矩阵**：
 $$
@@ -91,13 +87,7 @@ R_z(\alpha) = \begin{bmatrix}
 \end{bmatrix}
 $$
 
-
-
-
-
-
-
-> **透视投影矩阵的主要目的是通过将三维坐标缩放并转换为齐次坐标，将视锥体中的物体投影到二维平面上**
+> 透视投影矩阵的主要目的是通过将三维坐标缩放并转换为齐次坐标，将视锥体中的物体投影到二维平面上
 
 - zNear：近裁剪面的位置
 - zFar：远裁剪面的位置
@@ -144,36 +134,13 @@ M_{ortho} =
 $$
 缩放矩阵（缩放至[−1,1] 区间为2）和平移矩阵（移动到原点位置）
 
-t = tan(angle / 2) * -zNear  (因为右手定则z轴为负)
+t = tan(angle / 2) * -zNear // 因为右手定则z轴为负
 
 b = -t
 
 r = t * aspect_ratio
 
 l = -r
-
-
-
-#### 旋转矩阵的罗德里格斯公式
-
-$$
-R = I \cos \theta + (1 - \cos \theta)(\mathbf{k} \mathbf{k}^T) + \sin \theta 
-\begin{bmatrix} 
-0 & -k_z & k_y \\ 
-k_z & 0 & -k_x \\ 
--k_y & k_x & 0 
-\end{bmatrix}
-$$
-
-其中：
-
-- I是单位矩阵。
-
-- kkT 是旋转轴的外积，表示旋转轴的投影矩阵。
-
-- 最后一项是旋转轴的叉积矩阵，表示垂直旋转轴的旋转分量。
-
-  
 
 #### 作业描述
 
@@ -187,6 +154,10 @@ $$
 Eigen::Matrix4f get_model_matrix(float rotation_angle)
 {
     Eigen::Matrix4f model = Eigen::Matrix4f::Identity();
+
+    // TODO: Implement this function
+    // Create the model matrix for rotating the triangle around the Z axis.
+    // Then return it.
     float rotation_angle_radian = rotation_angle * MY_PI / 180;
     Eigen::Matrix4f rotation;
     rotation << cos(rotation_angle_radian), -sin(rotation_angle_radian), 0, 0,
